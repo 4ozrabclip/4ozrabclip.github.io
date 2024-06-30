@@ -1,5 +1,5 @@
 import React from 'react';
-import texasRedLogo from 'src/pages/img/TexasRedMenu.PNG';  
+import texasRedLogo from '/img/TexasRedMenu.PNG';  
 
 function Projects() {
     const openInNewWindow = (url) => {
