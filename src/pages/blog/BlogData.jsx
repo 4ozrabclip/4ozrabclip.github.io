@@ -2,15 +2,9 @@ const BlogData = [
 
     {
       id: 1,
-      title: "My First Blog Post",
+      title: "223",
       content: "testing testing",
-      date: "December 6, 2023",
-    },
-    {
-        id: 2,
-        title: "Hello",
-        content: "Hello there",
-        date: "December 6, 2023",
+      date: "31 May, 2024",
     },
 
   ];

@@ -38,6 +38,17 @@ function LeftBody() {
         </div>
         <div className="card">
             <iframe
+            title='4ozBeatz - KH405'
+            width="653"
+            height="400"
+            src={`https://www.youtube.com/embed/reDAObSw8M4`}
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            />
+        </div>
+        <div className="card">
+            <iframe
             title='12 december charlieso'
             width="653"
             height="400"
