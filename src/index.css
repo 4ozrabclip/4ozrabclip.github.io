@@ -125,6 +125,34 @@ ul {
       margin-top: 10px;
     }
 
+    .blog-post {
+      background-color: #070707d8;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    
+    .blog-post h2 {
+      font-size: 24px;
+      color: #ffffff;
+      margin-bottom: 10px;
+    }
+    
+    .blog-post p {
+      background-color: #000000;
+      font-size: 10px;
+      color: #dddddd;
+      line-height: 1.8;
+      white-space: pre-wrap;
+    }
+    
+    .blog-post .date {
+      font-size: 14px;
+      color: #999;
+      margin-top: 10px;
+    }
+
 
 
 
@@ -140,6 +168,25 @@ ul {
 /*
     projects
 */
+.right-proj, 
+.left-proj{
+  width: 50%;
+
+}
+.left-proj {
+  float: left;
+}
+.right-proj {
+  float: right;
+}
+
+.row-title{
+  border: 0.2px solid hsl(0, 0%, 4%);
+  text-align: center;
+  font-family: monospace;
+  margin-bottom: 3px;
+}
+
 .proj-card {
   border: 1px solid hsl(0, 0%, 25%);
   border-radius: 10px;
@@ -154,16 +201,18 @@ ul {
 }
 
 .proj-img {
-  width: 520px;
-  height: 400px; 
-  margin-bottom: 10px;
+  width: 100%;
+  height: 100%; 
 }
 
 .proj-content {
+  margin: 2px;
   text-align: center;
+  width: 100%;
 }
 .proj-desc{
   font-weight: lighter;
+  margin: 8px;
   font-size: 0.7em;
 }
 
