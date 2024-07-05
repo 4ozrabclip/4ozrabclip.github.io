@@ -1,17 +1,18 @@
 {
   "files": {
-    "main.css": "/static/css/main.fc45a504.css",
-    "main.js": "/static/js/main.31a2107c.js",
+    "main.css": "/static/css/main.8c668d2e.css",
+    "main.js": "/static/js/main.eff30afb.js",
     "static/js/651.e14051d8.chunk.js": "/static/js/651.e14051d8.chunk.js",
+    "static/media/TexasRedLogo.PNG": "/static/media/TexasRedLogo.25068e98e51ad4f73450.PNG",
+    "static/media/oneOutsNeonPulse.png": "/static/media/oneOutsNeonPulse.6ab98f18c15d2632605d.png",
     "static/media/linkedin_icon.png": "/static/media/linkedin_icon.554504099883b40ad533.png",
-    "static/media/TexasRedMenu.PNG": "/static/media/TexasRedMenu.9dfaadd38276adb78c50.PNG",
     "index.html": "/index.html",
-    "main.fc45a504.css.map": "/static/css/main.fc45a504.css.map",
-    "main.31a2107c.js.map": "/static/js/main.31a2107c.js.map",
+    "main.8c668d2e.css.map": "/static/css/main.8c668d2e.css.map",
+    "main.eff30afb.js.map": "/static/js/main.eff30afb.js.map",
     "651.e14051d8.chunk.js.map": "/static/js/651.e14051d8.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.fc45a504.css",
-    "static/js/main.31a2107c.js"
+    "static/css/main.8c668d2e.css",
+    "static/js/main.eff30afb.js"
   ]
 }
