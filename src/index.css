@@ -12,6 +12,7 @@
 h1, h2, label, p, ul, li {
   font-family: 'Fragment Mono', monospace;
   color: white;
+  text-decoration: None;
 }
 
 h1 {
@@ -64,6 +65,7 @@ ul {
   color: white;
   margin-bottom: 20px;
   letter-spacing: 10px;
+  text-decoration: none;
 }
 
 .nav-button {
@@ -161,8 +163,23 @@ ul {
   filter: invert(1);
 }
 .contact-info {
-  margin-left: 40%;
+  text-align: center;
+  margin-left: 30%;
+  margin-right: 30%;
 }
+    .contact-right,
+    .contact-left {
+      width: 50%;
+    }
+    
+    .contact-left {
+      float: left;
+    }
+    
+    .contact-right {
+      float: right;
+    }
+
 
 
 /*

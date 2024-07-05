@@ -23,7 +23,7 @@ function App() {
             />}</div>
 
         <div className="headnav">
-          <h1 className="head-title">4oz Rabclip Mane</h1>
+          <h1 className="head-title"><Link to="/" className="head-title">4oz Rabclip Mane</Link></h1>
 
           <nav>
             <ul >
