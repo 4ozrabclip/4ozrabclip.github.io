@@ -17,7 +17,7 @@ function LeftProjects() {
                             In OneOutsNeonPulse you are spawned on a fight ring floating above a neon-cityscape, facing a pro-fighter robot.<br/><br/>
                             Music and art by DJ Cannibal and myself
                             </p>
-                                <button className="proj-button" onClick={() => openInNewWindow("https://itch.io/profile/4ozmane")}>
+                                <button className="proj-button" onClick={() => openInNewWindow("https://4ozmane.itch.io/one-outs-neon-pulse")}>
                                         View on Itch.IO
                                 </button>
                     </div>

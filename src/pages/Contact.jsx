@@ -23,7 +23,7 @@ const Contact = () => {
       <div className = 'contact-right'>
       <p>
         X: {' '}
-        <a href="https://www.linkedin.com/in/charlie-young-nz/" target="_blank" rel="noopener noreferrer">
+        <a href="https://x.com/buymyfiddis" target="_blank" rel="noopener noreferrer">
           <img
             className="linkedin-logo"
             src={xIcon}
