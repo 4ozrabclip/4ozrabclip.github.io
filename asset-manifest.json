@@ -1,19 +1,20 @@
 {
   "files": {
     "main.css": "/static/css/main.1b38528a.css",
-    "main.js": "/static/js/main.b68a9a97.js",
+    "main.js": "/static/js/main.8eb5b3e8.js",
     "static/js/651.e14051d8.chunk.js": "/static/js/651.e14051d8.chunk.js",
+    "static/media/youtubelogo.png": "/static/media/youtubelogo.9d072e9abca4561976f9.png",
     "static/media/TexasRedLogo.PNG": "/static/media/TexasRedLogo.25068e98e51ad4f73450.PNG",
     "static/media/oneOutsNeonPulse.png": "/static/media/oneOutsNeonPulse.6ab98f18c15d2632605d.png",
     "static/media/X_icon.png": "/static/media/X_icon.955e3bacb6ef5719cc7a.png",
     "static/media/NeonPulseArcadeBanner.png": "/static/media/NeonPulseArcadeBanner.2c4ff19c832203f0ff3a.png",
     "index.html": "/index.html",
     "main.1b38528a.css.map": "/static/css/main.1b38528a.css.map",
-    "main.b68a9a97.js.map": "/static/js/main.b68a9a97.js.map",
+    "main.8eb5b3e8.js.map": "/static/js/main.8eb5b3e8.js.map",
     "651.e14051d8.chunk.js.map": "/static/js/651.e14051d8.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1b38528a.css",
-    "static/js/main.b68a9a97.js"
+    "static/js/main.8eb5b3e8.js"
   ]
 }
