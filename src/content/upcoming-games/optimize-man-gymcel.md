@@ -14,4 +14,4 @@ Balance your mental health stats and improve your muscle function, and once you'
 - **Brutal gym minigames** to push your body to its limits—or break it.  
 - **Multiple endings** based on your journey of self-improvement… or self-destruction.  
 
-Wishlist now on Steam! 🚀 [Steam Page](https://store.steampowered.com/app/3500530/Optimize_Man_Gymcel/) 
+Wishlist now on Steam! 🚀🚀🚀 [Steam Page](https://store.steampowered.com/app/3500530/Optimize_Man_Gymcel/) 
