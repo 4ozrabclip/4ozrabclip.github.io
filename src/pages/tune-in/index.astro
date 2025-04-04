@@ -1,0 +1,243 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
+import { getCollection } from 'astro:content';
+import FormattedDate from '../../components/FormattedDate.astro';
+import { onMount} from 'solid-js';
+
+// We'll use tuneIn collection for music videos
+const tuneInVideos = (await getCollection('tuneIn')).sort(
+        (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+// onMount(() => {
+//         const twitchChannel = "rabclip";
+//         const notLiveMessage = document.getElementById('not-live-message');
+        
+//         // Create Twitch embed
+//         new Twitch.Embed("twitch-embed", {
+//                 width: "100%",
+//                 height: "100%",
+//                 channel: twitchChannel,
+//                 layout: "video",
+//                 autoplay: true,
+//                 parent: ["4ozstudio.com"] // Required: Add your domain(s) here
+//         });
+
+// });
+// onMount(() => {
+//   const script = document.createElement("script");
+//   script.src = "https://embed.twitch.tv/embed/v1.js";
+//   script.async = true;
+//   script.onload = () => {
+//     new Twitch.Embed("twitch-embed", {
+//       width: "100%",
+//       height: "480",
+//       channel: "rabclip",
+//       layout: "video",
+//       autoplay: false,
+//       parent: ["4ozstudio.com"]
+//     });
+//   };
+//   document.body.appendChild(script);
+// });
+---
+
+<!doctype html>
+<html lang="en">
+        <head>
+                <BaseHead title="4oz Studio - Tune-In" description="Watch livestreams and music videos from 4oz Studio" />          
+                <style>
+                        main {
+                                width: 760px;
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: center;
+                        }
+
+                        .tune-in {
+                                margin-top: 2vh;
+                        }
+
+                        .livestream-container {
+                                width: 100%;
+                                margin-bottom: 4vh;
+                                border: 1px solid black;
+                                padding: 8px;
+                        }
+
+                        .livestream-title {
+                                font-size: 1.5rem;
+                                font-weight: 600;
+                                margin-bottom: 1rem;
+                        }
+
+                        .livestream-embed {
+                                position: relative;
+                                width: 100%;
+                                padding-bottom: 56.25%; /* 16:9 aspect ratio */
+                                height: 0;
+                                overflow: hidden;
+                        }
+
+                        #twitch-embed {
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                width: 100%;
+                                height: 100%;
+                        }
+
+                        .not-live-message {
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                width: 100%;
+                                height: 100%;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                background-color: #f5f5f5;
+                                text-align: center;
+                                padding: 20px;
+                        }
+
+                        .videos-title {
+                                font-size: 1.5rem;
+                                font-weight: 600;
+                                margin: 2rem 0 1rem 0;
+                        }
+
+                        .video-ul {
+                                margin-top: 2rem;
+                                width: 100%;
+                                display: grid;
+                                grid-template-columns: 1fr;
+                                gap: 1px;
+                                list-style-type: none;
+                                margin: 0;
+                                padding: 0;
+                        }
+                        ul li {
+                                border: 1px solid black;
+                                position: relative;
+                                transition: ease-in-out 0.1s;
+                        }
+                        ul li * {
+                                text-decoration: none;
+                                transition: 0.2s ease;
+                        }
+
+                        ul li img {
+                                margin-bottom: 0.5rem;
+                                width: 100%;
+                                border: 1px solid black;
+                        }
+                        ul li a {
+                                height: 100%;
+                        }
+                        .top {
+                                border-bottom: 1px solid black;
+                                padding: 8px;
+                        }
+                        .bottom {
+                        }
+                        .title {
+                                margin: 0;
+                                color: rgb(var(--black));
+                                line-height: 1;
+                                padding: 6px 2px;
+                                padding-top: 0;
+                                font-weight: 600;
+                        }
+                        .description {
+                                color: black;
+                                font-size: 16px;
+                                padding: 10px;
+                                padding-bottom: 40px;
+                        }
+                        .watch-video {
+                                position: absolute;
+                                right: 0;
+                                bottom: 0;
+                                font-size: 14px;
+                                color: black;
+                                font-weight: 600;
+                                display: flex;
+                                align-items: center;
+                                padding: 0 10px;
+                        }
+                        ul li a:hover h4,
+                        ul li a:hover .watch-video {
+                                text-decoration: underline;
+                        }
+                        ul li a:hover .title {
+                                text-decoration: none;
+                        }
+                        ul li:hover {
+                                transform: translateY(-1px);
+                        }
+                </style>
+        </head>
+        <body>
+                <Header />
+                <main>
+                        <div class="tune-in">
+
+  </body>
+</html>
+
+                                <section>
+                                        <!-- Twitch Livestream section -->
+                                        <div id="livestream-container" class="livestream-container">
+                                                <h2 class="livestream-title">Livestream</h2>
+                                                <div class="livestream-embed">
+                                                        <div id="twitch-embed"></div>
+                                                       
+
+                                                </div>
+                                        </div>
+
+                                        <!-- Music Videos section -->
+                                        <h2 class="videos-title">Music Videos</h2>
+                                        <ul class="video-ul">
+                                                {
+                                                        tuneInVideos.map((video) => (
+                                                                <li>
+                                                                        <a href={video.data.videoUrl || `/tune-in/${video.id}/`} target={video.data.videoUrl ? "_blank" : "_self"} title="Watch Video">
+                                                                                <div class="top">
+                                                                                        <img width={720} height={360} src={video.data.heroImage} alt="Video Thumbnail" />
+                                                                                        <h2 class="title">{video.data.title}</h2>
+                                                                                </div>
+                                                                                <div class="bottom">
+                                                                                        <p class="description">{video.data.description}</p>
+                                                                                </div>
+                                                                                <p class="watch-video">Watch Video
+                                                                                        <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#000000"><path d="m576-288-51-51 105-105H192v-72h438L525-621l51-51 192 192-192 192Z"/></svg>
+                                                                                </p>
+                                                                        </a>
+                                                                </li>
+                                                        ))
+                                                }
+                                        </ul>
+                                </section>
+                        </div>
+                </main>
+                <Footer />
+                <script is:inline src="https://embed.twitch.tv/embed/v1.js"></script>
+                <script is:inline>
+                // Simple check to see if Twitch embed loaded
+                        new Twitch.Embed("twitch-embed", {
+                        width: '100%',
+                        height: '100%',
+                        channel: "rabclip",
+                        layout: "video",
+                        autoplay: true,
+                        parent: ["4ozstudio.com", "localhost"],
+                        theme: "dark"
+                        });
+                </script>
+
+        </body>
+</html>

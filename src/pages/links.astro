@@ -1,0 +1,65 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title="4oz Studio - Home" description={SITE_DESCRIPTION} />
+		<style>
+            main {
+				margin-top: 0;
+
+            }
+
+            .links-container {
+                height: 70vh;
+                max-width: 750px;
+                padding: 10px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 20px;
+            }
+
+            .link {
+                text-decoration: none;
+            }
+
+            .logo {
+                width: 50px;
+                transition: ease-in-out 0.1s;
+            }
+            .logo:hover {
+                transform: scale(1.15);
+            }
+		</style>
+	</head>
+	<body>
+        <Header />
+		<main>
+			<div class="links-container">
+                <a href="https://store.steampowered.com/app/3500530/Optimize_Man_Gymcel/" title="Visit 4ozStudio on Steam" target="_blank" class="link">
+                    <img src="/icons/steam_logo.svg" alt="4ozStudio Steam" class="logo" />
+                </a>
+                <a href="https://www.linkedin.com/company/4ozstudio" title="Visit 4ozStudio LinkedIn page" target="_blank" class="link">
+                    <img src="/icons/linkedin_logo.svg" alt="4ozStudio LinkedIn profile" class="logo" />
+                </a>
+                <a href="https://www.facebook.com/people/4oz-Studio/61569452122511/" title="Visit 4ozStudio Facebook page" target="_blank" class="link">
+                    <img src="/icons/facebook_logo.svg" alt="4ozStudio Facebook profile" class="logo" />
+                </a>
+                <a href="https://www.instagram.com/4oz.studio/" title="Visit 4ozStudio Instagram page" target="_blank" class="link">
+                    <img src="/icons/instagram_logo.svg" alt="4ozStudio Instagram profile" class="logo" />
+                </a>
+                <a href="https://www.youtube.com/@4ozmane" title="Visit 4ozStudio Youtube channel" target="_blank" class="link">
+                    <img src="/icons/youtube_logo.svg" alt="4ozStudio Youtube channel" class="logo" />
+                </a>
+            </div>
+		</main>
+        <Footer />
+	</body>
+</html>
