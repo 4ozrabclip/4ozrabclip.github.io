@@ -11,37 +11,7 @@ import { onMount} from 'solid-js';
 const tuneInVideos = (await getCollection('tuneIn')).sort(
         (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
-// onMount(() => {
-//         const twitchChannel = "rabclip";
-//         const notLiveMessage = document.getElementById('not-live-message');
-        
-//         // Create Twitch embed
-//         new Twitch.Embed("twitch-embed", {
-//                 width: "100%",
-//                 height: "100%",
-//                 channel: twitchChannel,
-//                 layout: "video",
-//                 autoplay: true,
-//                 parent: ["4ozstudio.com"] // Required: Add your domain(s) here
-//         });
 
-// });
-// onMount(() => {
-//   const script = document.createElement("script");
-//   script.src = "https://embed.twitch.tv/embed/v1.js";
-//   script.async = true;
-//   script.onload = () => {
-//     new Twitch.Embed("twitch-embed", {
-//       width: "100%",
-//       height: "480",
-//       channel: "rabclip",
-//       layout: "video",
-//       autoplay: false,
-//       parent: ["4ozstudio.com"]
-//     });
-//   };
-//   document.body.appendChild(script);
-// });
 ---
 
 <!doctype html>
