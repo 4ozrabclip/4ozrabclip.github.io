@@ -10,7 +10,7 @@ type Props = CollectionEntry<'blog'>['data'];
 const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 
 // Determine if this is a game post by checking the URL path
-const isGamePost = Astro.url.pathname.includes('/games-new/') || Astro.url.pathname.includes('/tune-in/');
+const isGamePost = Astro.url.pathname.includes('/games/') || Astro.url.pathname.includes('/tune-in/');
 ---
 
 <html lang="en">
