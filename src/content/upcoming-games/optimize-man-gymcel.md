@@ -1,17 +1,52 @@
 ---
-title: "OptimizeMan: The Gymcel"
-description: "Get jacked, build your confidence, find a cool girlfriend!  Or not.."
-pubDate: "March 10 2025"
+title: "OptimizeMan: Gymcel"
+description: "A nonlinear psychological horror gym-sim survival game about body horror, mental health, and the grind of toxic self-optimization."
+pubDate: "March 10 2026"
 heroImage: "/game-assets/OptimizeManWebsiteCoverPic.png"
 ---
 
-### A Grotesque, Body-Horror, Dark Comedy Experience  
-Balance your mental health stats and improve your muscle function, and once you're ready, take a leap of faith and try to get a girlfriend! What's the worst that could happen?  
+Nonlinear gym and mental health simulator, where you can break your bones, take steroids and get grotesque plastic surgery procedures.  Play as OptimizeMan, a regular guy grinding at the Hypermaxx Facility, where the pressure to level up physically and mentally slowly distorts reality.
+<iframe width="100%" height="500" src="https://www.youtube.com/embed/-AO3sPgHvfY" title="OptimizeMan: Gymcel Trailer" frameborder="0" allowfullscreen></iframe>
 
-- **Surreal and grotesque visuals** inspired by body horror and internet culture.  
-- **Mental state system** that impacts dialogue, interactions, and gameplay.  
-- **Deep forum mechanics** where players engage with an unhinged online community.  
-- **Brutal gym minigames** to push your body to its limits—or break it.  
-- **Multiple endings** based on your journey of self-improvement… or self-destruction.  
 
-Wishlist now on Steam! 🚀🚀🚀 [Steam Page](https://store.steampowered.com/app/3500530/Optimize_Man_Gymcel/) 
+
+---
+
+### Game Summary
+
+“OptimizeMan: Gymcel” is a psychological horror/satire gym-sim survival game that delves into the absurdities of toxic self-improvement culture, mental health struggles, and internet subcultures.  The game navigates the journey of OptimizeMan, a young anonymous figure caught in a loop of radical self-improvement, attempting to balance personal growth and emotional stability.
+
+Mechanically inspired by titles like **Don't Starve** and **Pathologic**, but with a faster pace and more reactive. Grotesque deformations, injuries, audio shifts, and achievements keep the pressure vivid and the feedback immediate.  
+
+
+---
+
+### Core Gameplay
+
+- **Muscle-Based Body Horror**  
+  Push yourself too far and watch your body deform, tear, and snap. Every gain comes with a cost.
+
+- **Mental Stat Survival System**  
+  Emotions aren’t flavor text—your mental state directly affects gameplay, narrative paths, and survival odds.
+
+- **Permadeath & Replayability**  
+  Every run is a new attempt. New content and hidden moments reward different playstyles and paths.
+
+- **Dynamic Difficulty**  
+  Difficulty scales through consequences. Fail to meet your daily goals, and you'll spiral into harsher penalties and weirder realities.
+
+---
+
+### Key Pillars
+
+- Grotesque Injury & Transformation Mechanics  
+- Emotional Survival & Dialogue System  
+- Minimalist, Surreal Horror-Comedy Tone
+
+---
+
+## Wishlist on Steam
+
+[![Wishlist on Steam](https://store.steampowered.com//public/images/v6/logo_steam_footer.png)](https://store.steampowered.com/app/3500530/Optimize_Man_Gymcel/)
+
+<iframe src="https://store.steampowered.com/widget/3500530/" frameborder="0" width="100%" height="190"></iframe>
