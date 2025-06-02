@@ -10,3 +10,6 @@ heroImage: "/game-assets/NPDWebsiteCoverPic.png"
 Walk Rabclips dream simulation, where every turn you make will be a decisive factor for your next maze.  **It is a psychological journey, with a beautiful soundtrack, thought-provoking dialogue and endless dark hallways.**
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/f-uwHbMO6EM" title="NeonPulse Darkness Mini Promo Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen> </iframe> 
+
+
+##### [Play the demo on Itch.io](https://4ozstudio.itch.io/neonpulse-darkness)

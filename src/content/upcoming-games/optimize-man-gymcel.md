@@ -27,7 +27,7 @@ Mechanically inspired by titles like **Don't Starve** and **Pathologic**, but wi
   Push yourself too far and watch your body deform, tear, and snap. Every gain comes with a cost.
 
 - **Mental Stat Survival System**  
-  Emotions aren’t flavor text—your mental state directly affects gameplay, narrative paths, and survival odds.
+  Your mental state directly affects gameplay, and survival odds.
 
 - **Permadeath & Replayability**  
   Every run is a new attempt. New content and hidden moments reward different playstyles and paths.
