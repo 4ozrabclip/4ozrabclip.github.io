@@ -139,6 +139,14 @@ hr {
   transform: scale(1.1);
 }
 
+.log-placeholder-box {
+    background: #fafafa;
+    padding: 1em;
+    border-radius: 1%;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
 @media (max-width: 720px) {
   body {
     font-size: 18px;

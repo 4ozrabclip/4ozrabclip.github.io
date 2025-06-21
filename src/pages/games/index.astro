@@ -146,7 +146,19 @@ const logs = (await getCollection('devLogs')).sort(
 
                         <div class="dev-logs">
                                 <h4>Dev Logs</h4>
-                                <section>
+                                        <section>
+                                                <div class="log-placeholder-box">
+                                                        <h5>Dev logs temporarily removed. </h5>
+                                             
+                                                        <p>We are reconstructing the dev log series. 
+                                                        <br/>
+                                                        Subscribe to the 
+                                                        <a href="https://www.youtube.com/@4ozmane/live" target="_blank" rel="noopener noreferrer">YouTube channel</a> 
+                                                        and tune into our livestreams in the meantime.</p>
+                                                </div>
+                                        </section>
+                                
+                               <!-- <section>
                                         <ul class="log-ul">
                                                 {
                                                         logs.map((post) => (
@@ -167,7 +179,7 @@ const logs = (await getCollection('devLogs')).sort(
                                                         ))
                                                 }
                                         </ul>
-                                </section>
+                                </section> -->
                         </div>
                 </main>
                 <Footer />
