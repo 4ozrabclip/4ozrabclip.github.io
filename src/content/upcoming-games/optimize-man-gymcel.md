@@ -5,7 +5,9 @@ pubDate: "March 10 2026"
 heroImage: "/game-assets/OptimizeManWebsiteCoverPic.png"
 ---
 
-Nonlinear gym and mental health simulator, where you can break your bones, take steroids and get grotesque plastic surgery procedures.  Play as OptimizeMan, a regular guy grinding at the Hypermaxx Facility, where the pressure to level up physically and mentally slowly distorts reality.
+OptimizeMan: Gymcel is a life-sim, survival game built in Unreal Engine 5.
+
+Play as OptimizeMan, a regular guy grinding at the Hypermaxx Facility, where the pressure to level up physically and mentally slowly distorts reality.
 <iframe width="100%" height="500" src="https://www.youtube.com/embed/-AO3sPgHvfY" title="OptimizeMan: Gymcel Trailer" frameborder="0" allowfullscreen></iframe>
 
 
@@ -14,9 +16,9 @@ Nonlinear gym and mental health simulator, where you can break your bones, take 
 
 ### Game Summary
 
-“OptimizeMan: Gymcel” is a psychological horror/satire gym-sim survival game that delves into the absurdities of toxic self-improvement culture, mental health struggles, and internet subcultures.  The game navigates the journey of OptimizeMan, a young anonymous figure caught in a loop of radical self-improvement, attempting to balance personal growth and emotional stability.
+“OptimizeMan: Gymcel” is a psychological horror/surreal comedy gym-sim survival game that delves into the absurdities of toxic self-improvement culture, mental health struggles, self-worth, and burnout.  Play as OptimizeMan, a young anonymous figure attempting to balance physical growth and emotional stability.
 
-Mechanically inspired by titles like **Don't Starve** and **Pathologic**, but with a faster pace and more reactive. Grotesque deformations, injuries, audio shifts, and achievements keep the pressure vivid and the feedback immediate.  
+Follows insanity system based survival mechanics.  Grotesque deformations, injuries, audio shifts, and hidden achievements keep the pressure vivid and the feedback immediate.  
 
 
 ---
@@ -35,13 +37,17 @@ Mechanically inspired by titles like **Don't Starve** and **Pathologic**, but wi
 - **Dynamic Difficulty**  
   Difficulty scales through consequences. Fail to meet your daily goals, and you'll spiral into harsher penalties and weirder realities.
 
+- **Score Chasing**
+  Earn points for completing goals, and get your name high on the leaderboard.
+
 ---
+### Screenshots
 
-### Key Pillars
+![MainMenu](https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/9cbfd9cd-3678-4192-bebe-ea850d4e4bb8/3x2_1.png)
 
-- Grotesque Injury & Transformation Mechanics  
-- Emotional Survival & Dialogue System  
-- Minimalist, Surreal Horror-Comedy Tone
+![MirrorStats](https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/942551a0-bc3e-4b87-aa72-ce4f13b8da13/3x2_4.png)
+
+![WorkoutDistortion](https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/01860658-1440-4381-be69-3274c453a7a0/3x2_2.png)
 
 ---
 
