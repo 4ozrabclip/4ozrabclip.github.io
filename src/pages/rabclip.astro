@@ -1,0 +1,58 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title="4oz Studio - Home" description={SITE_DESCRIPTION} />
+		<style>
+            main {
+				margin-top: 0;
+            }
+
+            .links-container {
+                height: 70vh;
+                padding: 10px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 20px;
+            }
+            .link {
+                text-decoration: none;
+            }
+            .support-logo {
+                width: 240px;
+                transition: ease-in-out 0.1s;
+            }
+            .support-logo:hover {
+                transform: scale(1.05);
+            }
+            .logo-rab {
+                width: 70px;
+                transition: ease-in-out 0.1s;
+            }
+            .logo-rab:hover {
+                transform: scale(1.15);
+            }
+		</style>
+	</head>
+	<body>
+		<main>
+			<div class="links-container">
+                <a href="https://github.com/4ozrabclip" title="Charlie Simmons Github" target="_blank" class="link">
+                    <img src="/icons/github-mark.svg" alt="4ozStudio Youtube channel" class="logo-rab" />
+                </a>
+                <a href="https://www.linkedin.com/in/charlie-young-nz" title="Visit Charlie Simmons LinkedIn" target="_blank" class="link">
+                    <img src="/icons/linkedin-svg.svg" alt="4ozStudio Instagram profile" class="logo-rab" />
+                </a>
+            </div>
+		</main>
+        <Footer />
+	</body>
+</html>
