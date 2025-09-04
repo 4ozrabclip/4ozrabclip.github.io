@@ -46,7 +46,7 @@ const tuneInVideos = (await getCollection('tuneIn')).sort(
                         .livestream-embed {
                                 position: relative;
                                 width: 100%;
-                                padding-bottom: 56.25%; 
+                                padding-bottom: 56.25%; /* 16:9 aspect ratio */
                                 height: 0;
                                 overflow: hidden;
                         }
@@ -155,47 +155,59 @@ const tuneInVideos = (await getCollection('tuneIn')).sort(
                 <main>
                         <div class="tune-in">
 
+  </body>
+</html>
+
                                 <section>
+                                        <!-- Twitch Livestream section -->
                                         <div id="livestream-container" class="livestream-container">
                                                 <h2 class="livestream-title">Livestream</h2>
                                                 <div class="livestream-embed">
-                                                        <iframe 
-                                                                src="https://player.kick.com/rabclip-4ozstudio"
-                                                                frameborder="0"
-                                                                allowfullscreen="true"
-                                                                scrolling="no"
-                                                                style="position:absolute; top:0; left:0; width:100%; height:100%;">
-                                                        </iframe>
-                                                        </div>
+                                                        <div id="twitch-embed"></div>
+                                                       
+
                                                 </div>
                                         </div>
 
+                                        <!-- Music Videos section -->
                                         <h2 class="videos-title">Music Videos</h2>
                                         <ul class="video-ul">
                                                 {
-                                                tuneInVideos.map((video) => (
-                                                        <li>
-                                                                <a href={video.data.videoUrl || `/tune-in/${video.id}/`} target={video.data.videoUrl ? "_blank" : "_self"} title="Watch Video">
-                                                                        <div class="top">
-                                                                                <img width={720} height={360} src={video.data.heroImage} alt="Video Thumbnail" />
-                                                                                <h2 class="title">{video.data.title}</h2>
-                                                                        </div>
-                                                                        <div class="bottom">
-                                                                                <p class="description">{video.data.description}</p>
-                                                                        </div>
-                                                                        <p class="watch-video">Watch Video
-                                                                                <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#000000">
-                                                                                        <path d="m576-288-51-51 105-105H192v-72h438L525-621l51-51 192 192-192 192Z"/>
-                                                                                </svg>
-                                                                        </p>
-                                                                </a>
-                                                        </li>
-                                                ))
+                                                        tuneInVideos.map((video) => (
+                                                                <li>
+                                                                        <a href={video.data.videoUrl || `/tune-in/${video.id}/`} target={video.data.videoUrl ? "_blank" : "_self"} title="Watch Video">
+                                                                                <div class="top">
+                                                                                        <img width={720} height={360} src={video.data.heroImage} alt="Video Thumbnail" />
+                                                                                        <h2 class="title">{video.data.title}</h2>
+                                                                                </div>
+                                                                                <div class="bottom">
+                                                                                        <p class="description">{video.data.description}</p>
+                                                                                </div>
+                                                                                <p class="watch-video">Watch Video
+                                                                                        <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#000000"><path d="m576-288-51-51 105-105H192v-72h438L525-621l51-51 192 192-192 192Z"/></svg>
+                                                                                </p>
+                                                                        </a>
+                                                                </li>
+                                                        ))
                                                 }
                                         </ul>
                                 </section>
                         </div>
                 </main>
                 <Footer />
+                <script is:inline src="https://embed.twitch.tv/embed/v1.js"></script>
+                <script is:inline>
+                // Simple check to see if Twitch embed loaded
+                        new Twitch.Embed("twitch-embed", {
+                        width: '100%',
+                        height: '100%',
+                        channel: "rabclip",
+                        layout: "video",
+                        autoplay: true,
+                        parent: ["4ozstudio.com", "localhost"],
+                        theme: "dark"
+                        });
+                </script>
+
         </body>
 </html>
