@@ -8,12 +8,9 @@ import FormattedDate from '../../components/FormattedDate.astro';
 import { onMount} from 'solid-js';
 
 // We'll use tuneIn collection for music videos
-
 const tuneInVideos = (await getCollection('tuneIn')).sort(
         (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
-const storeItems = (await getCollection('storeItems'));
-
 
 ---
 
@@ -23,116 +20,21 @@ const storeItems = (await getCollection('storeItems'));
                 <BaseHead title="4oz Studio - Tune-In" description="Watch livestreams and music videos from 4oz Studio" />          
                 <style>
                         main {
-                                width: 1000px;
+                                width: 760px;
                                 display: flex;
                                 flex-direction: column;
                                 justify-content: center;
                         }
-                        .cart-icon {
-                                width: 20%;
-                                max-width: 20px;
-                                height: auto;
-                                float: right;
-                        }
+
                         .tune-in {
                                 margin-top: 2vh;
                         }
-                        .shopify-container-ul {
-                                margin-top: 2rem;
-                                width: 100%;
-                                height: auto;
-                                display: grid;
-                                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-                                gap: 0.2rem; /* spacing between cards */
-                                list-style: none;
-                                padding: 0;
-                        }
-                        .shopify-carousel {
-                                position: relative;
-                                display: flex;
-                                align-items: center;
-                                margin-top: 2rem;
-                        }
-
-                        .carousel-wrapper {
-                                overflow: hidden;
-                                width: 100%;
-                        }
-
-                        .shopify-container-ul {
-                                display: flex;
-                                gap: 0.7rem;
-                                list-style: none;
-                                padding: 0;
-                                margin: 0.6%;
-                        }
-
-                        .shopify-card {
-                                flex: 0 0 calc((100% - 2rem)/3); /* 3 items visible, accounting for gaps */
-                                border: 1px solid black;
-                                background: white;
-                                display: flex;
-                                flex-direction: column;
-                        
-
-                        }
-                        .shopify-card a {
-                                text-decoration: none;
-                                color: inherit;
-                                display: flex;
-                                flex-direction: column;
-                                height: 100%;
-                        }
-                        .carousel-btn {
-                                background: #000;
-                                color: #fff;
-                                border: none;
-                                padding: 0.5rem 1rem;
-                                cursor: pointer;
-                                font-size: 0.9rem;
-                        }
-                        .carousel-btn.left {
-                                margin-right: 0.5rem;
-                        }
-                        .carousel-btn.right {
-                                margin-left: 0.5rem;
-                        }
-
-                        .hero img {
-                                width: 100%;
-                                height: auto;
-                                display: block;
-                        }
-
-                        .title-row {
-                                display: flex;
-                                justify-content: space-between; /* title left, cart right */
-                                align-items: center;
-                                padding: 0.5rem 1rem;
-                        }
-
-                        .title-row .title {
-                                margin: 0;
-                                font-size: 1.2rem;
-                                font-weight: 600;
-                        }
-
-                        .cart-icon {
-                                width: 30px;
-                                height: auto;
-                        }
-
-                        .logo {
-                                width: 50px;
-                                transition: ease-in-out 0.1s;
-                        }
 
                         .livestream-container {
-                                width: 80%;
-                                margin: 0 auto 4vh;
+                                width: 100%;
+                                margin-bottom: 4vh;
                                 border: 1px solid black;
                                 padding: 8px;
-
                         }
 
                         .livestream-title {
@@ -170,15 +72,12 @@ const storeItems = (await getCollection('storeItems'));
                                 text-align: center;
                                 padding: 20px;
                         }
-                        .music-videos {
-              
-                        }
+
                         .videos-title {
                                 font-size: 1.5rem;
                                 font-weight: 600;
                                 margin: 2rem 0 1rem 0;
                         }
-
                         .video-ul {
                                 margin-top: 2rem;
                                 display: grid;
@@ -198,17 +97,10 @@ const storeItems = (await getCollection('storeItems'));
                                 transition: 0.2s ease;
                         }
 
-                        .shopify-card .hero img {
+                        ul li img {
+                                margin-bottom: 0.5rem;
                                 width: 100%;
-                                height: auto;
-                                display: block;
-                                border: none; /* remove unwanted border */
-                        }
-
-                        .cart-icon {
-                                width: 30%;
-                                height: auto;
-                                border: none; /* ensures no border */
+                                border: 1px solid black;
                         }
                         ul li a {
                                 height: 100%;
@@ -232,17 +124,6 @@ const storeItems = (await getCollection('storeItems'));
                                 font-size: 16px;
                                 padding: 10px;
                                 padding-bottom: 40px;
-                        }
-                        .read-more {
-                                position: absolute;
-                                right: 0;
-                                bottom: 0;
-                                font-size: 14px;
-                                color: black;
-                                font-weight: 600;
-                                display: flex;
-                                align-items: center;
-                                padding: 0 10px;
                         }
                         .watch-video {
                                 position: absolute;
@@ -270,78 +151,46 @@ const storeItems = (await getCollection('storeItems'));
         <body>
                 <Header />
                 <main>
+                        <div class="tune-in">
 
-                        <section class="shopify-carousel">
-                                <button class="carousel-btn left">&lt;</button>
-                                <div class="carousel-wrapper">
-                                <ul class="shopify-container-ul">
-                                {
-                                        storeItems.map((item) => (
-                                                <li class="shopify-card">
-                                                        <a href={item.data.buyLink} target="_blank" rel="noopener noreferrer">
-                                                                <div class="hero">
-                                                                        <img src={item.data.heroImage} alt={`${item.data.title} Image`} />
-                                                                </div>
-                                                                <div class="title-row">
-                                                                        <h4 class="title">{item.data.title}</h4>
-                                                                        <img
-                                                                        class="cart-icon"
-                                                                        src={item.data.cartImage || "/icons/shopify.png"}
-                                                                        alt="Buy on Shopify"
-                                                                        />
-                                                                </div>
-                                                        </a>
-                                                </li>
-                                        ))
-                                }
-                                </ul>
-                                </div>
-                                <button class="carousel-btn right">&gt;</button>
-                        </section>
+  </body>
+</html>
 
-        
-                        <section class = "tune-in">
-                                <!-- Twitch Livestream section -->
-                                <div id="livestream-container" class="livestream-container">
-                                        <h2 class="livestream-title">Livestream</h2>
-                                        <div class="livestream-embed">
-                                                <div id="twitch-embed"></div>
-                                                
+                                <section>
+                                        <!-- Twitch Livestream section -->
+                                        <div id="livestream-container" class="livestream-container">
+                                                <h2 class="livestream-title">Livestream</h2>
+                                                <div class="livestream-embed">
+                                                        <div id="twitch-embed"></div>
+                                                       
 
+                                                </div>
                                         </div>
-                                </div>
 
-                                
-                        </section>
-                
-
-
-                                <!-- Music Videos section -->
-                <div class = "music-videos">
-                        <section>
-                        <h3 class="videos-title">Music Videos</h3>
-                                <ul class="video-ul">
-                                        {
-                                                tuneInVideos.map((video) => (
-                                                        <li>
-                                                                <a href={video.data.videoUrl || `/tune-in/${video.id}/`} target={video.data.videoUrl ? "_blank" : "_self"} title="Watch Video">
-                                                                        <div class="top">
-                                                                                <img width={720} height={360} src={video.data.heroImage} alt="Video Thumbnail" />
-                                                                                <h2 class="title">{video.data.title}</h2>
-                                                                        </div>
-                                                                        <div class="bottom">
-                                                                                <p class="description">{video.data.description}</p>
-                                                                        </div>
-                                                                        <p class="watch-video">Watch Video
-                                                                                <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#000000"><path d="m576-288-51-51 105-105H192v-72h438L525-621l51-51 192 192-192 192Z"/></svg>
-                                                                        </p>
-                                                                </a>
-                                                        </li>
-                                                ))
-                                        }
-                                </ul>
-                        </section>
-                </div>
+                                        <!-- Music Videos section -->
+                                        <h2 class="videos-title">Music Videos</h2>
+                                        <ul class="video-ul">
+                                                {
+                                                        tuneInVideos.map((video) => (
+                                                                <li>
+                                                                        <a href={video.data.videoUrl || `/tune-in/${video.id}/`} target={video.data.videoUrl ? "_blank" : "_self"} title="Watch Video">
+                                                                                <div class="top">
+                                                                                        <img width={720} height={360} src={video.data.heroImage} alt="Video Thumbnail" />
+                                                                                        <h2 class="title">{video.data.title}</h2>
+                                                                                </div>
+                                                                                <div class="bottom">
+                                                                                        <p class="description">{video.data.description}</p>
+                                                                                </div>
+                                                                                <p class="watch-video">Watch Video
+                                                                                        <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#000000"><path d="m576-288-51-51 105-105H192v-72h438L525-621l51-51 192 192-192 192Z"/></svg>
+                                                                                </p>
+                                                                        </a>
+                                                                </li>
+                                                        ))
+                                                }
+                                        </ul>
+                                </section>
+                        </div>
                 </main>
                 <Footer />
                 <script is:inline src="https://embed.twitch.tv/embed/v1.js"></script>
@@ -357,21 +206,6 @@ const storeItems = (await getCollection('storeItems'));
                         theme: "dark"
                         });
                 </script>
-                <script is:inline>
-  const wrapper = document.querySelector('.carousel-wrapper');
-  const btnLeft = document.querySelector('.carousel-btn.left');
-  const btnRight = document.querySelector('.carousel-btn.right');
-
-  btnLeft.addEventListener('click', () => {
-    wrapper.scrollBy({ left: -wrapper.clientWidth / 3, behavior: 'smooth' });
-  });
-
-  btnRight.addEventListener('click', () => {
-    wrapper.scrollBy({ left: wrapper.clientWidth / 3, behavior: 'smooth' });
-  });
-</script>
-
-
 
         </body>
 </html>

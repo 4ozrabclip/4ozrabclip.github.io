@@ -4,15 +4,14 @@ import BlogPost from '../../layouts/BlogPost.astro';
 import { render } from 'astro:content';
 
 export async function getStaticPaths() {
-  const tuneInVideos = await getCollection("tuneIn");
-  const storeItems = await getCollection("storeItems");
+        // fetch posts from tuneIn collection
+        const tuneInVideos = await getCollection('tuneIn');
 
-  return [...tuneInVideos, ...storeItems].map((entry) => ({
-    params: { slug: entry.slug }, // use slug, not id
-    props: entry,
-  }));
+        return tuneInVideos.map((post) => ({
+                params: { slug: post.id },
+                props: post,
+        }));
 }
-
 
 const post = Astro.props;
 const { Content } = await render(post);
