@@ -70,5 +70,21 @@ const tuneIn = defineCollection({
     videoId: z.string().optional(),  // YouTube video ID
   }),
 });
+const storeItems = defineCollection({
+  // Load Markdown and MDX files in the `src/content/games/` directory.
+  loader: glob({
+    base: "./src/content/store-items",
+    pattern: "**/*.{md,mdx}",
+  }),
+  // Type-check frontmatter using a schema
+  schema: z.object({
+    title: z.string(),
+    // Transform string to Date object
+    heroImage: z.string().optional(),
+    buyLink: z.string().url().default("https://4ozstudio.myshopify.com/"),
+    cartImage: z.string().default("/icons/shopify.png")
+  }),
+});
 
-export const collections = { upcomingGames, devLogs, games, tuneIn };
+
+export const collections = { upcomingGames, devLogs, games, tuneIn , storeItems};
