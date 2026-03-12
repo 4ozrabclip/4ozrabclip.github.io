@@ -1,43 +1,47 @@
 ---
 title: "LENG"
-description: "LENG is a surreal vertical shooter about flexing mechanics and climbing through layered arenas pulsing with bass and blood."
+description: "LENG is a solo and co-op extraction roguelite set inside a vast vertical megastructure, where crews climb through robotic hunting grounds and gather in flickering raver safehouses."
 pubDate: "March 10 2027"
 heroImage: "/game-assets/LengWebsiteCoverPic.png"
 ---
-
 
 ---
 
 ### Game Summary
 
-“LENG” is a surreal vertical arena shooter set in a distorted, bass-heavy world of layered arenas and rhythmic violence.
-Climb through stacked levels of abstraction—each higher layer a test of movement, precision, and ego.
+**LENG** is a solo and co-op extraction roguelite set inside a vast vertical megastructure of endless sectors and machine territory.
 
-Stylized in stark monochrome with bursts of neon, LENG blurs grime and minimalism into a hypnotic flow of speed, spectacle, and sound. Every ascent amplifies the pressure, every drop hits harder.
+Hidden between hostile layers are **raver safehouses** — flickering pockets of humanity where pirate radio signals and low bass leak through concrete walls. They are the only places to regroup, secure loot, and prepare for the next climb.
 
+Beyond them lies a labyrinth of dark geometry and hyper-aggressive robotics.
+
+**Climb the megastructure.  
+Expand the safehouse network.  
+Risk everything to rise higher.**
 
 ---
 
 ### Core Gameplay
 
-- **Vertical Layered Arenas**  
-  Each arena is built in stacked tiers.  Fight and maneuver your way up by climbing the central pole before time runs out.
+- **Extraction Runs**  
+  Loot collected during an expedition is unsecured until you reach a safehouse. Die before extraction and everything you carried is lost.
 
-- **Climb for Points**  
-  Points are awarded in order of ascent. The quicker you reach the next layer, the higher your score.
+- **Safehouse Network**  
+  Discover and activate hidden safehouses that act as spawn points, extraction anchors, and stash locations.
 
-- **Trick-Heavy Combat**  
-  Movement and mechanics mastery define every encounter. Semi-autos, trick-scopes, and speed are your tools of expression.
+- **Risk Economy**  
+  Loot can be transferred between safehouses, but distance and weight increase the chance of losing it.
 
-- **Dynamic Difficulty**  
-  Difficulty scales through consequences. Fail to meet your daily goals, and you'll spiral into harsher penalties and weirder realities.
-
-- **Session-Based Play**
-  Host custom matches with selectable arena counts (1, 3, 6, or 9 layers), and control how long the climb lasts. Each session builds momentum, distortion, and spectacle as you rise.
+- **Solo or Co-op Climbing**  
+  Explore the structure alone or with a crew, pushing deeper into hostile sectors and expanding your foothold inside the megastructure.
 
 ---
-### Screenshots
 
+### World & Atmosphere
 
+LENG’s world is stark and abstract — **ultra-low poly megastructures rendered in harsh black-and-white wireframe**, gradually fractured by glitching shader effects and visual distortions.
+
+The soundscape draws heavily from **UK garage, dubstep, and dark ambient bass culture**.  
+Deep sub-bass pulses through empty sectors, distant pirate radio signals flicker in safehouses, and distorted system announcements echo through the structure.
 
 ---
