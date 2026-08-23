@@ -1,0 +1,91 @@
+---
+const STEAM_APP_ID = '5152210';
+const STEAM_URL = `https://store.steampowered.com/app/${STEAM_APP_ID}/LENG`;
+---
+
+<style>
+	:global(body.leng-landing) {
+		background-color: #000;
+		color: #fff;
+		min-height: 100vh;
+	}
+
+	.studio-logo-link {
+		display: block;
+		margin: 0;
+		padding: 0 1em;
+		text-decoration: none;
+	}
+
+	.studio-logo {
+		height: 60px;
+	}
+
+	.leng-main {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		min-height: 100vh;
+		padding: 80px 20px 40px;
+		box-sizing: border-box;
+	}
+
+	.leng-logo {
+		width: min(420px, 80vw);
+		height: auto;
+		margin-bottom: 2rem;
+	}
+
+	.steam-section {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: min(646px, 100%);
+	}
+
+	.steam-link img {
+		display: block;
+	}
+
+	.steam-widget {
+		width: 100%;
+		height: 190px;
+		border: 0;
+		margin-top: 1rem;
+	}
+
+	@media (max-width: 550px) {
+		.studio-logo-link {
+			display: flex;
+			justify-content: center;
+			padding: 1em 1em 0;
+		}
+	}
+</style>
+
+<a href="/links/" class="studio-logo-link" title="4ozStudio Links">
+	<img src="/4ozStudioTransparent_White.png" alt="4ozStudio" class="studio-logo" />
+</a>
+
+<main class="leng-main">
+	<img
+		src="/game-assets/LENG/LENGLogo_White.png"
+		alt="LENG"
+		class="leng-logo"
+	/>
+
+	<div class="steam-section">
+		<a href={STEAM_URL} class="steam-link" target="_blank" rel="noopener noreferrer">
+			<img
+				src="https://store.steampowered.com/public/images/v6/logo_steam_footer.png"
+				alt="Wishlist on Steam"
+			/>
+		</a>
+		<iframe
+			src={`https://store.steampowered.com/widget/${STEAM_APP_ID}/`}
+			class="steam-widget"
+			title="LENG on Steam"
+		></iframe>
+	</div>
+</main>

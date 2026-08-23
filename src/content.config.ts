@@ -70,6 +70,36 @@ const tuneIn = defineCollection({
     videoId: z.string().optional(),  // YouTube video ID
   }),
 });
+
+const shortForm = defineCollection({
+  loader: glob({
+    base: "./src/content/short-form",
+    pattern: "**/*.{md,mdx}",
+  }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string().optional(),
+    pubDate: z.coerce.date(),
+    platform: z.enum(["youtube", "tiktok", "instagram"]),
+    youtubeVideoId: z.string().optional(),
+    externalUrl: z.string().url(),
+  }),
+});
+
+const newsletter = defineCollection({
+  loader: glob({
+    base: "./src/content/newsletter",
+    pattern: "**/*.{md,mdx}",
+  }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    pubDate: z.coerce.date(),
+    updatedDate: z.coerce.date().optional(),
+    heroImage: z.string().optional(),
+    edition: z.string().optional(),
+  }),
+});
 const storeItems = defineCollection({
   // Load Markdown and MDX files in the `src/content/games/` directory.
   loader: glob({
@@ -87,4 +117,4 @@ const storeItems = defineCollection({
 });
 
 
-export const collections = { upcomingGames, devLogs, games, tuneIn , storeItems};
+export const collections = { upcomingGames, devLogs, games, tuneIn, storeItems, shortForm, newsletter };

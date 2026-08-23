@@ -1,0 +1,228 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+	clips: CollectionEntry<'shortForm'>[];
+}
+
+const { clips } = Astro.props;
+const embeddableClips = clips.filter((clip) => clip.data.platform === 'youtube' && clip.data.youtubeVideoId);
+const hasEmbeds = embeddableClips.length > 0;
+const showArrows = embeddableClips.length > 1;
+---
+
+<section class="short-form-section" aria-label="Short form videos">
+	<h2 class="section-title">Recent Content</h2>
+
+	{
+		hasEmbeds ? (
+			<div class="carousel" data-carousel>
+				{
+					showArrows && (
+						<button type="button" class="carousel-arrow carousel-arrow-prev" data-prev aria-label="Previous clip">
+							<svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px" fill="#000000">
+								<path d="M384-288 333-339 438-444H192v-72h246l-105-105 51-51 192 192-192 192Z" />
+							</svg>
+						</button>
+					)
+				}
+
+				<div class="carousel-viewport">
+					{
+						embeddableClips.map((clip, index) => (
+							<div
+								class="carousel-slide"
+								data-slide
+								data-active={index === 0 ? 'true' : 'false'}
+								aria-hidden={index === 0 ? 'false' : 'true'}
+							>
+								<div class="embed-frame">
+									<iframe
+										src={`https://www.youtube.com/embed/${clip.data.youtubeVideoId}?rel=0&modestbranding=1`}
+										title={clip.data.title}
+										allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+										allowfullscreen
+										loading={index === 0 ? 'eager' : 'lazy'}
+									/>
+								</div>
+							</div>
+						))
+					}
+				</div>
+
+				{
+					showArrows && (
+						<button type="button" class="carousel-arrow carousel-arrow-next" data-next aria-label="Next clip">
+							<svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px" fill="#000000">
+								<path d="m576-288-51-51 105-105H192v-72h438L525-621l51-51 192 192-192 192Z" />
+							</svg>
+						</button>
+					)
+				}
+			</div>
+		) : (
+			<p class="short-form-empty">
+				Add YouTube Shorts in <code>src/content/short-form/</code> to populate this carousel.
+			</p>
+		)
+	}
+</section>
+
+<style>
+	.short-form-section {
+		width: 100%;
+		margin-bottom: 4vh;
+		overflow: visible;
+	}
+
+	.section-title {
+		font-size: 1.5rem;
+		font-weight: 600;
+		margin: 0 0 1.5rem;
+	}
+
+	.carousel {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0;
+		width: calc(100% + 11rem);
+		max-width: 54rem;
+		margin-left: 50%;
+		transform: translateX(-50%);
+	}
+
+	.carousel-viewport {
+		position: relative;
+		width: min(280px, 100%);
+		flex: 0 0 auto;
+	}
+
+	.carousel-slide {
+		display: none;
+	}
+
+	.carousel-slide[data-active='true'] {
+		display: block;
+	}
+
+	.embed-frame {
+		position: relative;
+		width: 100%;
+		aspect-ratio: 9 / 16;
+		border: 1px solid black;
+		background: #000;
+	}
+
+	.embed-frame iframe {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		border: 0;
+	}
+
+	.carousel-arrow {
+		flex: 0 0 auto;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 3rem;
+		height: 3rem;
+		padding: 0;
+		border: 1px solid black;
+		background: transparent;
+		cursor: pointer;
+	}
+
+	.carousel-arrow:hover {
+		background-image: linear-gradient(
+			45deg,
+			rgba(0, 0, 0, 0.2) 25%,
+			transparent 25%,
+			transparent 50%,
+			rgba(0, 0, 0, 0.2) 50%,
+			rgba(0, 0, 0, 0.2) 75%,
+			transparent 75%,
+			transparent
+		);
+		background-size: 5px 5px;
+	}
+
+	.carousel-arrow-prev {
+		margin-right: 2.5rem;
+	}
+
+	.carousel-arrow-next {
+		margin-left: 2.5rem;
+	}
+
+	.short-form-empty {
+		margin: 0;
+		font-size: 1rem;
+	}
+
+	@media (max-width: 700px) {
+		.carousel {
+			width: 100%;
+			max-width: none;
+			transform: none;
+			margin-left: 0;
+		}
+
+		.carousel-arrow-prev {
+			margin-right: 0.75rem;
+		}
+
+		.carousel-arrow-next {
+			margin-left: 0.75rem;
+		}
+
+		.carousel-viewport {
+			width: min(240px, calc(100% - 7rem));
+		}
+	}
+</style>
+
+<script>
+	const carousels = document.querySelectorAll('[data-carousel]');
+
+	carousels.forEach((carousel) => {
+		const slides = Array.from(carousel.querySelectorAll('[data-slide]'));
+		const prevButton = carousel.querySelector('[data-prev]');
+		const nextButton = carousel.querySelector('[data-next]');
+
+		if (slides.length <= 1) return;
+
+		let activeIndex = 0;
+		let timer: ReturnType<typeof setInterval> | undefined;
+
+		const showSlide = (index: number) => {
+			activeIndex = (index + slides.length) % slides.length;
+
+			slides.forEach((slide, slideIndex) => {
+				const isActive = slideIndex === activeIndex;
+				slide.setAttribute('data-active', isActive ? 'true' : 'false');
+				slide.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+			});
+		};
+
+		const restartTimer = () => {
+			if (timer) clearInterval(timer);
+			timer = setInterval(() => showSlide(activeIndex + 1), 8000);
+		};
+
+		prevButton?.addEventListener('click', () => {
+			showSlide(activeIndex - 1);
+			restartTimer();
+		});
+
+		nextButton?.addEventListener('click', () => {
+			showSlide(activeIndex + 1);
+			restartTimer();
+		});
+
+		restartTimer();
+	});
+</script>

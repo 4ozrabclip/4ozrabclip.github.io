@@ -2,210 +2,280 @@
 import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
-import { getCollection } from 'astro:content';
+import ShortFormCarousel from '../../components/ShortFormCarousel.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
-import { onMount} from 'solid-js';
+import { SITE_DESCRIPTION, NEWSLETTER_SIGNUP_URL } from '../../consts';
+import { getCollection } from 'astro:content';
 
-// We'll use tuneIn collection for music videos
 const tuneInVideos = (await getCollection('tuneIn')).sort(
-        (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 
+const shortFormClips = (await getCollection('shortForm')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+
+const newsletterEditions = (await getCollection('newsletter')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
 ---
 
 <!doctype html>
 <html lang="en">
-        <head>
-                <BaseHead title="4oz Studio - Tune-In" description="Watch livestreams and music videos from 4oz Studio" />          
-                <style>
-                        main {
-                                width: 760px;
-                                display: flex;
-                                flex-direction: column;
-                                justify-content: center;
-                        }
+	<head>
+		<BaseHead
+			title="4oz Studio - Tune-In"
+			description="Recent content, and monthly newsletter from 4oz Studio"
+		/>
+		<style>
+			main {
+				width: 760px;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				overflow: visible;
+			}
 
-                        .tune-in {
-                                margin-top: 2vh;
-                        }
+			.tune-in {
+				margin-top: 2vh;
+			}
 
-                        .livestream-container {
-                                width: 100%;
-                                margin-bottom: 4vh;
-                                border: 1px solid black;
-                                padding: 8px;
-                        }
+			.section-title {
+				font-size: 1.5rem;
+				font-weight: 600;
+				margin: 2rem 0 1rem;
+			}
 
-                        .livestream-title {
-                                font-size: 1.5rem;
-                                font-weight: 600;
-                                margin-bottom: 1rem;
-                        }
+			.newsletter-intro {
+				margin: 0 0 1rem;
+				font-size: 1rem;
+			}
 
-                        .livestream-embed {
-                                position: relative;
-                                width: 100%;
-                                padding-bottom: 56.25%; /* 16:9 aspect ratio */
-                                height: 0;
-                                overflow: hidden;
-                        }
+			.newsletter-signup {
+				display: inline-block;
+				margin-bottom: 1.5rem;
+				padding: 0.5rem 1rem;
+				border: 1px solid black;
+				font-weight: 600;
+				color: black;
+				text-decoration: none;
+				background: transparent;
+			}
 
-                        #twitch-embed {
-                                position: absolute;
-                                top: 0;
-                                left: 0;
-                                width: 100%;
-                                height: 100%;
-                        }
+			.newsletter-signup:hover {
+				background-image: linear-gradient(
+					45deg,
+					rgba(0, 0, 0, 0.2) 25%,
+					transparent 25%,
+					transparent 50%,
+					rgba(0, 0, 0, 0.2) 50%,
+					rgba(0, 0, 0, 0.2) 75%,
+					transparent 75%,
+					transparent
+				);
+				background-size: 5px 5px;
+			}
 
-                        .not-live-message {
-                                position: absolute;
-                                top: 0;
-                                left: 0;
-                                width: 100%;
-                                height: 100%;
-                                display: flex;
-                                align-items: center;
-                                justify-content: center;
-                                background-color: #f5f5f5;
-                                text-align: center;
-                                padding: 20px;
-                        }
+			.newsletter-signup.is-disabled {
+				opacity: 0.6;
+				cursor: not-allowed;
+				pointer-events: none;
+			}
 
-                        .videos-title {
-                                font-size: 1.5rem;
-                                font-weight: 600;
-                                margin: 2rem 0 1rem 0;
-                        }
-                        .video-ul {
-                                margin-top: 2rem;
-                                display: grid;
-                                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-                                gap: 1px;
-                                list-style-type: none;
-                                margin: 0 auto;
-                                padding: 0;
-                        }
-                        ul li {
-                                border: 1px solid black;
-                                position: relative;
-                                transition: ease-in-out 0.1s;
-                        }
-                        ul li * {
-                                text-decoration: none;
-                                transition: 0.2s ease;
-                        }
+			.card-ul {
+				margin-top: 1rem;
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+				gap: 1px;
+				list-style-type: none;
+				margin-left: 0;
+				margin-right: 0;
+				padding: 0;
+			}
 
-                        ul li img {
-                                margin-bottom: 0.5rem;
-                                width: 100%;
-                                border: 1px solid black;
-                        }
-                        ul li a {
-                                height: 100%;
-                        }
-                        .top {
-                                border-bottom: 1px solid black;
-                                padding: 8px;
-                        }
-                        .bottom {
-                        }
-                        .title {
-                                margin: 0;
-                                color: rgb(var(--black));
-                                line-height: 1;
-                                padding: 6px 2px;
-                                padding-top: 0;
-                                font-weight: 600;
-                        }
-                        .description {
-                                color: black;
-                                font-size: 16px;
-                                padding: 10px;
-                                padding-bottom: 40px;
-                        }
-                        .watch-video {
-                                position: absolute;
-                                right: 0;
-                                bottom: 0;
-                                font-size: 14px;
-                                color: black;
-                                font-weight: 600;
-                                display: flex;
-                                align-items: center;
-                                padding: 0 10px;
-                        }
-                        ul li a:hover h4,
-                        ul li a:hover .watch-video {
-                                text-decoration: underline;
-                        }
-                        ul li a:hover .title {
-                                text-decoration: none;
-                        }
-                        ul li:hover {
-                                transform: translateY(-1px);
-                        }
-                </style>
-        </head>
-        <body>
-                <Header />
-                <main>
-                        <div class="tune-in">
+			ul li {
+				border: 1px solid black;
+				position: relative;
+				transition: ease-in-out 0.1s;
+			}
 
-  </body>
-</html>
+			ul li * {
+				text-decoration: none;
+				transition: 0.2s ease;
+			}
 
-                                <section>
-                                        <!-- Twitch Livestream section -->
-                                        <div id="livestream-container" class="livestream-container">
-                                                <h2 class="livestream-title">Livestream</h2>
-                                                <div class="livestream-embed">
-                                                        <div id="twitch-embed"></div>
-                                                       
+			ul li img {
+				margin-bottom: 0.5rem;
+				width: 100%;
+				border: 1px solid black;
+			}
 
-                                                </div>
-                                        </div>
+			ul li a {
+				height: 100%;
+			}
 
-                                        <!-- Music Videos section -->
-                                        <h2 class="videos-title">Music Videos</h2>
-                                        <ul class="video-ul">
-                                                {
-                                                        tuneInVideos.map((video) => (
-                                                                <li>
-                                                                        <a href={video.data.videoUrl || `/tune-in/${video.id}/`} target={video.data.videoUrl ? "_blank" : "_self"} title="Watch Video">
-                                                                                <div class="top">
-                                                                                        <img width={720} height={360} src={video.data.heroImage} alt="Video Thumbnail" />
-                                                                                        <h2 class="title">{video.data.title}</h2>
-                                                                                </div>
-                                                                                <div class="bottom">
-                                                                                        <p class="description">{video.data.description}</p>
-                                                                                </div>
-                                                                                <p class="watch-video">Watch Video
-                                                                                        <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#000000"><path d="m576-288-51-51 105-105H192v-72h438L525-621l51-51 192 192-192 192Z"/></svg>
-                                                                                </p>
-                                                                        </a>
-                                                                </li>
-                                                        ))
-                                                }
-                                        </ul>
-                                </section>
-                        </div>
-                </main>
-                <Footer />
-                <script is:inline src="https://embed.twitch.tv/embed/v1.js"></script>
-                <script is:inline>
-                // Simple check to see if Twitch embed loaded
-                        new Twitch.Embed("twitch-embed", {
-                        width: '100%',
-                        height: '100%',
-                        channel: "rabclip",
-                        layout: "video",
-                        autoplay: true,
-                        parent: ["4ozstudio.com", "localhost"],
-                        theme: "dark"
-                        });
-                </script>
+			.top {
+				border-bottom: 1px solid black;
+				padding: 8px;
+			}
 
-        </body>
+			.title {
+				margin: 0;
+				color: rgb(var(--black));
+				line-height: 1;
+				padding: 6px 2px;
+				padding-top: 0;
+				font-weight: 600;
+			}
+
+			.description {
+				color: black;
+				font-size: 16px;
+				padding: 10px;
+				padding-bottom: 40px;
+			}
+
+			.card-action {
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				font-size: 14px;
+				color: black;
+				font-weight: 600;
+				display: flex;
+				align-items: center;
+				padding: 0 10px;
+			}
+
+			ul li a:hover h2,
+			ul li a:hover h4,
+			ul li a:hover .card-action {
+				text-decoration: underline;
+			}
+
+			ul li a:hover .title {
+				text-decoration: none;
+			}
+
+			ul li:hover {
+				transform: translateY(-1px);
+			}
+
+			.edition-date {
+				margin: 0;
+				padding: 8px 10px 0;
+				font-size: 14px;
+				color: rgb(var(--gray));
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<div class="tune-in">
+				<section>
+					<ShortFormCarousel clips={shortFormClips} />
+
+					<section class="culture-section">
+						<h2 class="section-title">Culture &amp; Community</h2>
+						<p class="newsletter-intro">
+							Monthly picks for music, games, culture, and studio news — Music of the Month,
+							Game of the Month, The 4oz Find, and 4ozStudio updates.
+						</p>
+						<a
+							href={NEWSLETTER_SIGNUP_URL || '#'}
+							class:list={['newsletter-signup', { 'is-disabled': !NEWSLETTER_SIGNUP_URL }]}
+							target={NEWSLETTER_SIGNUP_URL ? '_blank' : undefined}
+							rel={NEWSLETTER_SIGNUP_URL ? 'noopener noreferrer' : undefined}
+						>
+							Want these emailed to you every month?
+						</a>
+
+						<ul class="card-ul">
+							{
+								newsletterEditions.map((edition) => (
+									<li>
+										<a href={`/tune-in/newsletter/${edition.id}/`} title="Read edition">
+											{edition.data.heroImage && (
+												<div class="top">
+													<img
+														width={720}
+														height={360}
+														src={edition.data.heroImage}
+														alt=""
+													/>
+												</div>
+											)}
+											<p class="edition-date">
+												<FormattedDate date={edition.data.pubDate} />
+											</p>
+											<h4 class="title">{edition.data.title}</h4>
+											<div class="bottom">
+												<p class="description">{edition.data.description}</p>
+											</div>
+											<p class="card-action">
+												Read Edition
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													height="20px"
+													viewBox="0 -960 960 960"
+													width="20px"
+													fill="#000000"
+													><path
+														d="m576-288-51-51 105-105H192v-72h438L525-621l51-51 192 192-192 192Z"
+													></path></svg
+												>
+											</p>
+										</a>
+									</li>
+								))
+							}
+						</ul>
+					</section>
+
+					<h2 class="section-title">Music Videos</h2>
+					<ul class="card-ul">
+						{
+							tuneInVideos.map((video) => (
+								<li>
+									<a
+										href={video.data.videoUrl || `/tune-in/${video.id}/`}
+										target={video.data.videoUrl ? '_blank' : '_self'}
+										title="Watch Video"
+									>
+										<div class="top">
+											<img
+												width={720}
+												height={360}
+												src={video.data.heroImage}
+												alt="Video Thumbnail"
+											/>
+											<h2 class="title">{video.data.title}</h2>
+										</div>
+										<div class="bottom">
+											<p class="description">{video.data.description}</p>
+										</div>
+										<p class="card-action">
+											Watch Video
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												height="20px"
+												viewBox="0 -960 960 960"
+												width="20px"
+												fill="#000000"
+												><path
+													d="m576-288-51-51 105-105H192v-72h438L525-621l51-51 192 192-192 192Z"
+												></path></svg
+											>
+										</p>
+									</a>
+								</li>
+							))
+						}
+					</ul>
+				</section>
+			</div>
+		</main>
+		<Footer />
+	</body>
 </html>

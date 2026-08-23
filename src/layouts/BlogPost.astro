@@ -9,8 +9,10 @@ type Props = CollectionEntry<'blog'>['data'];
 
 const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 
-// Determine if this is a game post by checking the URL path
-const isGamePost = Astro.url.pathname.includes('/games/') || Astro.url.pathname.includes('/tune-in/');
+// Hide dates on game pages and music video pages, but show them on newsletter editions.
+const hideDate =
+	Astro.url.pathname.includes('/games/') ||
+	(Astro.url.pathname.includes('/tune-in/') && !Astro.url.pathname.includes('/newsletter/'));
 ---
 
 <html lang="en">
@@ -66,7 +68,7 @@ const isGamePost = Astro.url.pathname.includes('/games/') || Astro.url.pathname.
                                 </div>
                                 <div class="prose">
                                         <div class="title">
-                                                {!isGamePost && (
+                                                {!hideDate && (
                                                 <div class="date">
                                                         <FormattedDate date={pubDate} />
                                                         {
