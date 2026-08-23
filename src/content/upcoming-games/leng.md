@@ -1,7 +1,7 @@
 ---
 title: "LENG"
-description: "LENG is a online co-op rhythm shooter, inspired by Metal: Hellsinger but with deep, dark and dangerous EDM and UKF bass-music."
-pubDate: "March 10 2027"
-heroImage: "/game-assets/LengWebsiteCoverPic.png"
+description: "A bass-drenched psychedelic FPS set in a vertical megastructure built on pirate radio and rave culture."
+pubDate: "March 10 2028"
+heroImage: "/game-assets/LENG/LENGLogo_Black.png"
 ---
 
