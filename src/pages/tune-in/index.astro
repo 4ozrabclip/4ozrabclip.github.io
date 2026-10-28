@@ -3,8 +3,7 @@ import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import ShortFormCarousel from '../../components/ShortFormCarousel.astro';
-import FormattedDate from '../../components/FormattedDate.astro';
-import { NEWSLETTER_SIGNUP_URL, PAGE_DESCRIPTIONS } from '../../consts';
+import { PAGE_DESCRIPTIONS } from '../../consts';
 import { getCollection } from 'astro:content';
 
 const tuneInVideos = (await getCollection('tuneIn')).sort(
@@ -12,10 +11,6 @@ const tuneInVideos = (await getCollection('tuneIn')).sort(
 );
 
 const shortFormClips = (await getCollection('shortForm')).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
-
-const newsletterEditions = (await getCollection('newsletter')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 ---
@@ -41,42 +36,6 @@ const newsletterEditions = (await getCollection('newsletter')).sort(
 				font-size: 1.5rem;
 				font-weight: 600;
 				margin: 2rem 0 1rem;
-			}
-
-			.newsletter-intro {
-				margin: 0 0 1rem;
-				font-size: 1rem;
-			}
-
-			.newsletter-signup {
-				display: inline-block;
-				margin-bottom: 1.5rem;
-				padding: 0.5rem 1rem;
-				border: 1px solid black;
-				font-weight: 600;
-				color: black;
-				text-decoration: none;
-				background: transparent;
-			}
-
-			.newsletter-signup:hover {
-				background-image: linear-gradient(
-					45deg,
-					rgba(0, 0, 0, 0.2) 25%,
-					transparent 25%,
-					transparent 50%,
-					rgba(0, 0, 0, 0.2) 50%,
-					rgba(0, 0, 0, 0.2) 75%,
-					transparent 75%,
-					transparent
-				);
-				background-size: 5px 5px;
-			}
-
-			.newsletter-signup.is-disabled {
-				opacity: 0.6;
-				cursor: not-allowed;
-				pointer-events: none;
 			}
 
 			.card-ul {
@@ -157,13 +116,6 @@ const newsletterEditions = (await getCollection('newsletter')).sort(
 			ul li:hover {
 				transform: translateY(-1px);
 			}
-
-			.edition-date {
-				margin: 0;
-				padding: 8px 10px 0;
-				font-size: 14px;
-				color: rgb(var(--gray));
-			}
 		</style>
 	</head>
 	<body>
@@ -172,63 +124,6 @@ const newsletterEditions = (await getCollection('newsletter')).sort(
 			<div class="tune-in">
 				<section>
 					<ShortFormCarousel clips={shortFormClips} />
-
-					<section class="culture-section">
-						<h2 class="section-title">Culture &amp; Community</h2>
-						<p class="newsletter-intro">
-							Monthly picks for music, games, culture, and studio news — Music of the Month,
-							Game of the Month, The 4oz Find, and 4ozStudio updates.
-						</p>
-						<a
-							href={NEWSLETTER_SIGNUP_URL || '#'}
-							class:list={['newsletter-signup', { 'is-disabled': !NEWSLETTER_SIGNUP_URL }]}
-							target={NEWSLETTER_SIGNUP_URL ? '_blank' : undefined}
-							rel={NEWSLETTER_SIGNUP_URL ? 'noopener noreferrer' : undefined}
-						>
-							Want these emailed to you every month?
-						</a>
-
-						<ul class="card-ul">
-							{
-								newsletterEditions.map((edition) => (
-									<li>
-										<a href={`/tune-in/newsletter/${edition.id}/`} title="Read edition">
-											{edition.data.heroImage && (
-												<div class="top">
-													<img
-														width={720}
-														height={360}
-														src={edition.data.heroImage}
-														alt=""
-													/>
-												</div>
-											)}
-											<p class="edition-date">
-												<FormattedDate date={edition.data.pubDate} />
-											</p>
-											<h4 class="title">{edition.data.title}</h4>
-											<div class="bottom">
-												<p class="description">{edition.data.description}</p>
-											</div>
-											<p class="card-action">
-												Read Edition
-												<svg
-													xmlns="http://www.w3.org/2000/svg"
-													height="20px"
-													viewBox="0 -960 960 960"
-													width="20px"
-													fill="#000000"
-													><path
-														d="m576-288-51-51 105-105H192v-72h438L525-621l51-51 192 192-192 192Z"
-													></path></svg
-												>
-											</p>
-										</a>
-									</li>
-								))
-							}
-						</ul>
-					</section>
 
 					<h2 class="section-title">Music Videos</h2>
 					<ul class="card-ul">
