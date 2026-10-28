@@ -4,7 +4,7 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import ShortFormCarousel from '../../components/ShortFormCarousel.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
-import { SITE_DESCRIPTION, NEWSLETTER_SIGNUP_URL } from '../../consts';
+import { NEWSLETTER_SIGNUP_URL, PAGE_DESCRIPTIONS } from '../../consts';
 import { getCollection } from 'astro:content';
 
 const tuneInVideos = (await getCollection('tuneIn')).sort(
@@ -21,12 +21,9 @@ const newsletterEditions = (await getCollection('newsletter')).sort(
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en-NZ">
 	<head>
-		<BaseHead
-			title="4oz Studio - Tune-In"
-			description="Recent content, and monthly newsletter from 4oz Studio"
-		/>
+		<BaseHead title="Tune-In | 4ozStudio" description={PAGE_DESCRIPTIONS.tuneIn} />
 		<style>
 			main {
 				width: 760px;

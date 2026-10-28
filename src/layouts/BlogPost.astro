@@ -7,7 +7,11 @@ import FormattedDate from '../components/FormattedDate.astro';
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, keywords, includeLengSchema } =
+	Astro.props as Props & {
+		keywords?: string;
+		includeLengSchema?: boolean;
+	};
 
 // Hide dates on game pages and music video pages, but show them on newsletter editions.
 const hideDate =
@@ -15,9 +19,16 @@ const hideDate =
 	(Astro.url.pathname.includes('/tune-in/') && !Astro.url.pathname.includes('/newsletter/'));
 ---
 
-<html lang="en">
+<html lang="en-NZ">
         <head>
-                <BaseHead title={title} description={description} />
+                <BaseHead
+                        title={`${title} | 4ozStudio`}
+                        description={description}
+                        image={heroImage}
+                        imageAlt={title}
+                        keywords={keywords}
+                        includeLengSchema={includeLengSchema}
+                />
                 <style>
                         main {
                                 width: 760px;

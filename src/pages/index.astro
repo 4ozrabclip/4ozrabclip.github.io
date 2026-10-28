@@ -2,18 +2,35 @@
 import BaseHead from '../components/BaseHead.astro';
 import HomePageDefault from '../components/home/HomePageDefault.astro';
 import LengLandingPage from '../components/home/LengLandingPage.astro';
-import { SITE_TITLE, SITE_DESCRIPTION, USE_LENG_LANDING } from '../consts';
+import {
+	SITE_TITLE,
+	SITE_DESCRIPTION,
+	USE_LENG_LANDING,
+	LENG_TITLE,
+	LENG_DESCRIPTION,
+	LENG_KEYWORDS,
+} from '../consts';
 
-const pageTitle = USE_LENG_LANDING ? 'LENG' : SITE_TITLE;
-const pageDescription = USE_LENG_LANDING
-	? 'Wishlist LENG on Steam — an online co-op rhythm shooter from 4ozStudio.'
-	: SITE_DESCRIPTION;
+const pageTitle = USE_LENG_LANDING ? LENG_TITLE : SITE_TITLE;
+const pageDescription = USE_LENG_LANDING ? LENG_DESCRIPTION : SITE_DESCRIPTION;
+const pageKeywords = USE_LENG_LANDING ? LENG_KEYWORDS : undefined;
+const pageImage = USE_LENG_LANDING
+	? '/game-assets/LENG/LENGLogo_Black.png'
+	: '/4ozStudioTransparent_resized.png';
+const pageImageAlt = USE_LENG_LANDING ? 'LENG' : '4ozStudio';
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en-NZ">
 	<head>
-		<BaseHead title={pageTitle} description={pageDescription} />
+		<BaseHead
+			title={pageTitle}
+			description={pageDescription}
+			keywords={pageKeywords}
+			image={pageImage}
+			imageAlt={pageImageAlt}
+			includeLengSchema={USE_LENG_LANDING}
+		/>
 	</head>
 	<body class:list={[{ 'leng-landing': USE_LENG_LANDING }]}>
 		{USE_LENG_LANDING ? <LengLandingPage /> : <HomePageDefault />}

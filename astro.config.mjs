@@ -5,6 +5,6 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://wwww.4ozstudio.com',
+	site: 'https://4ozstudio.com',
 	integrations: [mdx(), sitemap()],
 });

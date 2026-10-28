@@ -2,7 +2,7 @@
 import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
+import { PAGE_DESCRIPTIONS } from '../../consts';
 import { getCollection } from 'astro:content';
 import FormattedDate from '../../components/FormattedDate.astro';
 import arrowRight from '/icons/arrow-right.svg'
@@ -17,9 +17,9 @@ const logs = (await getCollection('devLogs')).sort(
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en-NZ">
         <head>
-                <BaseHead title="4oz Studio - Games" description="See 4oz Studio's games" />
+                <BaseHead title="Games | 4ozStudio" description={PAGE_DESCRIPTIONS.games} />
                 <style>
                         main {
                                 width: 960px;

@@ -2,16 +2,69 @@
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
 import '../styles/global.css';
+import {
+	LENG_SCHEMA,
+	SITE_AUTHOR,
+	SITE_KEYWORDS,
+	SITE_LOCALE,
+	SITE_TITLE,
+	SITE_TWITTER,
+} from '../consts';
 
 interface Props {
 	title: string;
 	description: string;
 	image?: string;
+	imageAlt?: string;
+	keywords?: string;
+	includeLengSchema?: boolean;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const {
+	title,
+	description,
+	image = '/4ozStudioTransparent_resized.png',
+	imageAlt = '4ozStudio',
+	keywords = SITE_KEYWORDS,
+	includeLengSchema = false,
+} = Astro.props;
 
-const { title, description, image = '/4ozStudioTransparent_resized.png' } = Astro.props;
+const imageURL = new URL(image, Astro.site ?? Astro.url);
+const jsonLd = {
+	'@context': 'https://schema.org',
+	'@graph': [
+		{
+			'@type': 'Organization',
+			'@id': new URL('/#organization', Astro.site ?? Astro.url).href,
+			name: SITE_TITLE,
+			alternateName: ['4oz Studio', '4ozstudio'],
+			url: Astro.site?.href ?? 'https://4ozstudio.com/',
+			description:
+				'Indie game studio from Christchurch, New Zealand. Unreal Engine games inspired by underground music, urban culture and alternative art.',
+			foundingLocation: {
+				'@type': 'Place',
+				address: {
+					'@type': 'PostalAddress',
+					addressLocality: 'Christchurch',
+					addressCountry: 'NZ',
+				},
+			},
+			sameAs: [
+				'https://www.youtube.com/@4ozmane',
+				'https://www.instagram.com/4oz.studio/',
+				'https://x.com/buymyfiddis',
+			],
+		},
+		...(includeLengSchema ? [LENG_SCHEMA] : []),
+		{
+			'@type': 'WebSite',
+			name: SITE_TITLE,
+			url: Astro.site?.href ?? 'https://4ozstudio.com/',
+			publisher: { '@id': new URL('/#organization', Astro.site ?? Astro.url).href },
+		},
+	],
+};
 ---
 
 <!-- Global Metadata -->
@@ -19,6 +72,8 @@ const { title, description, image = '/4ozStudioTransparent_resized.png' } = Astr
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="icon" type="image" href="/favicon.ico" />
 <meta name="generator" content={Astro.generator} />
+<meta name="theme-color" content="#000000" />
+<meta name="robots" content="index, follow" />
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
@@ -27,18 +82,29 @@ const { title, description, image = '/4ozStudioTransparent_resized.png' } = Astr
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
-<meta name="author" content="4oz Studio" />
+<meta name="keywords" content={keywords} />
+<meta name="author" content={SITE_AUTHOR} />
+<meta name="geo.region" content="NZ-CAN" />
+<meta name="geo.placename" content="Christchurch, New Zealand" />
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
-<meta property="og:url" content={Astro.url} />
+<meta property="og:site_name" content={SITE_TITLE} />
+<meta property="og:locale" content={SITE_LOCALE} />
+<meta property="og:url" content={canonicalURL} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={new URL(image, Astro.url)} />
+<meta property="og:image" content={imageURL} />
+<meta property="og:image:alt" content={imageAlt} />
 
 <!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content={Astro.url} />
-<meta property="twitter:title" content={title} />
-<meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={new URL(image, Astro.url)} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content={SITE_TWITTER} />
+<meta name="twitter:creator" content={SITE_TWITTER} />
+<meta name="twitter:url" content={canonicalURL} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={imageURL} />
+<meta name="twitter:image:alt" content={imageAlt} />
+
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

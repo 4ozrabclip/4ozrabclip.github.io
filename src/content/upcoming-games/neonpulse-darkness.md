@@ -1,6 +1,6 @@
 ---
 title: "NeonPulse: Darkness"
-description: "Traverse a series of dreamy mazes with limited lighting and a captivating soundtrack.--"
+description: "Walk a series of dark mazes with limited lighting and a strong soundtrack."
 pubDate: "Coming March 01, 2025"
 heroImage: "/game-assets/NPDWebsiteCoverPic.png"
 ---
