@@ -70,8 +70,6 @@ export const LENG_KEYWORDS = [
 export const PAGE_DESCRIPTIONS = {
 	games:
 		"Games from 4ozStudio, a Christchurch indie studio. Unreal Engine titles with a stylized look, from LENG to OptimizeMan: Gymcel.",
-	tuneIn:
-		"Music videos, shorts and culture from 4ozStudio in Christchurch, New Zealand.",
 	links: "Find 4ozStudio on YouTube, Instagram, Discord, Steam and merch.",
 	support: "Support 4ozStudio, an indie game studio from Christchurch, New Zealand.",
 	rabclip: "Links for Rabclip / Charlie, founder of 4ozStudio.",

@@ -15,8 +15,7 @@ const { title, description, pubDate, updatedDate, heroImage, keywords, includeLe
 
 // Hide dates on game pages and music video pages, but show them on newsletter editions.
 const hideDate =
-	Astro.url.pathname.includes('/games/') ||
-	(Astro.url.pathname.includes('/tune-in/') && !Astro.url.pathname.includes('/newsletter/'));
+	Astro.url.pathname.includes('/games/');
 ---
 
 <html lang="en-NZ">

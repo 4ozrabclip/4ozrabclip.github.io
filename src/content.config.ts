@@ -52,25 +52,6 @@ const games = defineCollection({
   }),
 });
 
-const tuneIn = defineCollection({
-  // Load Markdown and MDX files in the `src/content/tune-in/` directory.
-  loader: glob({
-    base: "./src/content/tune-in",
-    pattern: "**/*.{md,mdx}",
-  }),
-  // Type-check frontmatter using a schema
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    // Transform string to Date object
-    pubDate: z.coerce.date(),
-    updatedDate: z.coerce.date().optional(),
-    heroImage: z.string().optional(),
-    videoUrl: z.string().optional(), // YouTube video URL
-    videoId: z.string().optional(),  // YouTube video ID
-  }),
-});
-
 const shortForm = defineCollection({
   loader: glob({
     base: "./src/content/short-form",
@@ -117,4 +98,4 @@ const storeItems = defineCollection({
 });
 
 
-export const collections = { upcomingGames, devLogs, games, tuneIn, storeItems, shortForm, newsletter };
+export const collections = { upcomingGames, devLogs, games, storeItems, shortForm, newsletter };
